@@ -16,6 +16,7 @@ static NSString *const kPreferenceOverrideControlSpace = @"Override Control Spac
 static NSString *const kPreferenceFontFamilyKey = @"Font Family";
 static NSString *const kPreferenceFontSizeKey = @"Font Size";
 static NSString *const kPreferenceThemeKey = @"Theme";
+static NSString *const kPreferenceCursorTypeKey = @"CursorType";
 static NSString *const kPreferenceDisableDimmingKey = @"Disable Dimming";
 NSString *const kPreferenceLaunchCommandKey = @"Init Command";
 NSString *const kPreferenceBootCommandKey = @"Boot Command";
@@ -24,6 +25,7 @@ NSString *const kPreferenceHideStatusBar = @"Status Bar";
 @implementation UserPreferences {
     NSUserDefaults *_defaults;
 }
+
 
 + (instancetype)shared {
     static UserPreferences *shared = nil;
@@ -50,10 +52,19 @@ NSString *const kPreferenceHideStatusBar = @"Status Bar";
             kPreferenceLaunchCommandKey: @[@"/bin/login", @"-f", @"root"],
             kPreferenceBootCommandKey: @[@"/sbin/init"],
             kPreferenceHideStatusBar: @(NO),
+            kPreferenceCursorTypeKey: @(CursorTypeBlock),
         }];
         _theme = [[Theme alloc] initWithProperties:[_defaults objectForKey:kPreferenceThemeKey]];
     }
     return self;
+}
+
+- (CursorType) cursorType {
+    return [_defaults integerForKey:kPreferenceCursorTypeKey];
+}
+
+- (void) setCursorType:(CursorType)cursorType {
+    [_defaults setInteger:cursorType forKey:kPreferenceCursorTypeKey];
 }
 
 - (BOOL)hideStatusBar {

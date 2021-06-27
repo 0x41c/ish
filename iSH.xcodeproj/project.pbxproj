@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1DE051392687C847009E538F /* UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8632A7BE219A59FB00F02325 /* UserPreferences.m */; };
 		408A263A236440F8008A4E81 /* iOSFS.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A2639236440F8008A4E81 /* iOSFS.m */; };
 		497F6CF5254E5EA500C82F46 /* float80-test.c in Sources */ = {isa = PBXBuildFile; fileRef = 497F6C5A254E5C7E00C82F46 /* float80-test.c */; };
 		497F6CF6254E5EA500C82F46 /* float80.c in Sources */ = {isa = PBXBuildFile; fileRef = 497F6C66254E5C7F00C82F46 /* float80.c */; };
@@ -1546,6 +1547,7 @@
 				497F6D1D254E5EA600C82F46 /* epoll.c in Sources */,
 				497F6D1E254E5EA600C82F46 /* errno.c in Sources */,
 				497F6D1F254E5EA600C82F46 /* eventfd.c in Sources */,
+				1DE051392687C847009E538F /* UserPreferences.m in Sources */,
 				497F6D20254E5EA600C82F46 /* exec.c in Sources */,
 				497F6D21254E5EA600C82F46 /* exit.c in Sources */,
 				497F6D22254E5EA600C82F46 /* fork.c in Sources */,

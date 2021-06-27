@@ -18,6 +18,12 @@ typedef enum : NSUInteger {
     OptionMapEsc,
 } OptionMapping;
 
+typedef NS_ENUM(NSUInteger, CursorType) {
+    CursorTypeBlock,
+    CursorTypeBeam,
+    CursorTypeUnderline,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Theme : NSObject
@@ -52,6 +58,7 @@ extern NSString *const kThemeBackgroundColor;
 @property NSNumber *fontSize;
 @property NSArray<NSString *> *launchCommand;
 @property NSArray<NSString *> *bootCommand;
+@property CursorType cursorType;
 
 + (instancetype)shared;
 

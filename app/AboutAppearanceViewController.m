@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [UserPreferences.shared observe:@[@"theme", @"fontSize", @"fontFamily", @"hideStatusBar"]
+    [UserPreferences.shared observe:@[@"theme", @"fontSize", @"fontFamily", @"hideStatusBar", @"cursorType"]
                             options:0 owner:self usingBlock:^(typeof(self) self) {
         [self.tableView reloadData];
         [self setNeedsStatusBarAppearanceUpdate];
@@ -58,7 +58,7 @@ enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case ThemeNameSection: return Theme.presetNames.count;
-        case FontSection: return 2;
+        case FontSection: return 3;
         case PreviewSection: return 1;
         case StatusBarSection: return 1;
         default: NSAssert(NO, @"unhandled section"); return 0;
@@ -81,7 +81,7 @@ enum {
 - (NSString *)reuseIdentifierForIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case ThemeNameSection: return @"Theme Name";
-        case FontSection: return @[@"Font", @"Font Size"][indexPath.row];
+        case FontSection: return @[@"Font", @"Font Size", @"Cursor Style"][indexPath.row];
         case PreviewSection: return @"Preview";
         case StatusBarSection: return @"Status Bar";
         default: return nil;
@@ -111,6 +111,12 @@ enum {
                 UIStepper *stepper = [cell viewWithTag:2];
                 label.text = prefs.fontSize.stringValue;
                 stepper.value = prefs.fontSize.doubleValue;
+            } else if (indexPath.row == 2) {
+                UserPreferences *prefs = [UserPreferences shared];
+                CursorType cursor = prefs.cursorType;
+                UISegmentedControl *control = [cell viewWithTag:1];
+                [control setSelectedSegmentIndex:cursor];
+                
             }
             break;
             
@@ -165,6 +171,11 @@ enum {
 - (IBAction)fontSizeChanged:(UIStepper *)sender {
     UserPreferences.shared.fontSize = @((int) sender.value);
 }
+
+- (IBAction)cursorTypeChanged:(UISegmentedControl *)sender {
+    UserPreferences.shared.cursorType = sender.selectedSegmentIndex;
+}
+
 
 - (void) hideStatusBarChanged:(UISwitch *)sender {
     UserPreferences.shared.hideStatusBar = sender.on;

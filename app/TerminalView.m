@@ -54,7 +54,7 @@ struct rowcol {
            options:0 owner:self usingBlock:^(typeof(self) self) {
         self->_keyCommands = nil;
     }];
-    [prefs observe:@[@"fontFamily", @"fontSize", @"theme"]
+    [prefs observe:@[@"fontFamily", @"fontSize", @"theme", @"cursorType"]
            options:0 owner:self usingBlock:^(typeof(self) self) {
         [self _updateStyle];
     }];
@@ -130,6 +130,7 @@ struct rowcol {
         @"fontSize": @(self.effectiveFontSize),
         @"foregroundColor": [self cssColor:prefs.theme.foregroundColor],
         @"backgroundColor": [self cssColor:prefs.theme.backgroundColor],
+        @"cursorStyle": @(prefs.cursorType),
     };
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:themeInfo options:0 error:nil] encoding:NSUTF8StringEncoding];
     [self.terminal.webView evaluateJavaScript:[NSString stringWithFormat:@"exports.updateStyle(%@)", json] completionHandler:^(id result, NSError *error){
