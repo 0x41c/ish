@@ -1,0 +1,5 @@
+# This file contains pinned repositories managed by iSH. If the /ish directory
+# exists, iSH uses the metadata stored in it to keep this file up to date (by
+# overwriting the contents on boot.)
+http://apk.ish.app/v3.14-2023-05-19/main
+http://apk.ish.app/v3.14-2023-05-19/community
