@@ -2312,6 +2312,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 493B378F290F5320000C41ED /* CLI.xcconfig */;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = "Debug-ApplePleaseFixFB19282108";
 		};
@@ -2319,6 +2321,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 493B378F290F5320000C41ED /* CLI.xcconfig */;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
 		};
@@ -2570,6 +2574,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 493B378F290F5320000C41ED /* CLI.xcconfig */;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = DebugLinux;
 		};
@@ -2783,6 +2789,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 493B378F290F5320000C41ED /* CLI.xcconfig */;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = ReleaseLinux;
 		};
